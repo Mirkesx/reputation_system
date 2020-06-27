@@ -1,0 +1,1 @@
+docker rm kafka-data zk-data
