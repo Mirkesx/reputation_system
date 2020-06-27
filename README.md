@@ -74,9 +74,33 @@ Eventually you can decide to delete all the volumes of Kafka and ZK servers by u
 
 - bash progettoDeleteKafkaVolumes.sh
 
+<h3>Docker Volumes</h3>
+
+By default, this software will use 3 volumes. I gave you just 1 (the one attached to elastic search for the index). You can find it inside the /volumes folder.
+
+This volume itself is not required to run the software, so feel free to use another mount-point/volume to run it. Obviously you will have to set a new index if you change the volume you are using for elastic search (since all the configurations and changes are stored in there).
+
+If you want to attach your own volume to elastic search you have to edit the file <b>/bin/progettoESKibanaStart.sh</b>. You must change the 17th line:
+
+-v "$(pwd)"/../volumes/es-data:/usr/share/elasticsearch/data/ \
+
+this way:
+
+-v [mount-point|volume name]:/usr/share/elasticsearch/data/ \
+
+<h3>Slideshow and Demo</h3>
+
+Inside the doc folder you can find a jupyter notebook you can run. 
+
+This notebook is all about the project: it explains why i decided to create this software and how it works. 
+
+
+Assure to have installed <b>RISE</b> and <b>jupyter_contrib_nbextensions</b> python packages to run the slideshow properly.
+
 <h3>References</h3>
 
 About WSL 2: https://docs.microsoft.com/it-it/windows/wsl/wsl2-index
 
 About Kibana Visualizations: https://www.elastic.co/guide/en/kibana/current/visualize.html
 
+About Docker Volumes: https://docs.docker.com/storage/volumes/
